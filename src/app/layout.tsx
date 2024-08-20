@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import { Icons } from "@/components/Icons";
+import SearchBar from "@/components/SearchBar";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -25,6 +26,14 @@ export default function RootLayout({
               <h1 className="tracking-tight text-4xl sm:text-6xl font-bold">
                 EcommerceShop
               </h1>
+              <p className="max-w-xl text-center text-lg text-slate-700">
+                Modern and beautifully online shop with all products which you
+                need to your home.
+              </p>
+              <div className="mx-auto mt-16 w-full max-w-2xl flex flex-col">
+                <SearchBar />
+                {children}
+              </div>
             </div>
           </div>
         </div>
