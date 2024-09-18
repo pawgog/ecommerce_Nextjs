@@ -44,6 +44,11 @@ const Page = async ({ searchParams }: PageProps) => {
                 alt="product-img"
               />
             </div>
+            <div className="w-full flex-1 space-y-2 py-1">
+              <h1 className="text-lg font-medium text-gray-900">
+                {product.name}
+              </h1>
+            </div>
           </li>
         </Link>
       ))}
