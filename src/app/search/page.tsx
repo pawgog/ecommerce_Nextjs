@@ -1,6 +1,8 @@
 import { db } from "@/db";
 import { productTable } from "@/db/schema";
 import { sql } from "drizzle-orm";
+import Image from "next/image";
+import Link from "next/link";
 import { redirect } from "next/navigation";
 
 interface PageProps {
@@ -29,7 +31,24 @@ const Page = async ({ searchParams }: PageProps) => {
     )
     .limit(5);
 
-  return <pre>{JSON.stringify(products)}</pre>;
+  return (
+    <ul className="py-4 divide-y divide-zinc-100 bg-white shadow-md rounded-b-md">
+      {products.map((product) => (
+        <Link key={product.id} href={`/products/${product.id}`}>
+          <li className="mx-auto py-4 px-8 flex space-x-4">
+            <div className="relative flex items-center bg-zinc-100 rounded-lg w-40 h-40">
+              <Image
+                src={`/${product.imgId}`}
+                loading="eager"
+                fill
+                alt="product-img"
+              />
+            </div>
+          </li>
+        </Link>
+      ))}
+    </ul>
+  );
 };
 
 export default Page;
