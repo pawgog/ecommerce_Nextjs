@@ -48,6 +48,9 @@ const Page = async ({ searchParams }: PageProps) => {
               <h1 className="text-lg font-medium text-gray-900">
                 {product.name}
               </h1>
+              <p className="prose prose-sm text-gray-500 line-clamp-3">
+                {product.description}
+              </p>
             </div>
           </li>
         </Link>
