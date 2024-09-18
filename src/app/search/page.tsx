@@ -51,6 +51,9 @@ const Page = async ({ searchParams }: PageProps) => {
               <p className="prose prose-sm text-gray-500 line-clamp-3">
                 {product.description}
               </p>
+              <p className="text-base font-medium text-gray-900">
+                {product.price.toFixed(2)}€
+              </p>
             </div>
           </li>
         </Link>
