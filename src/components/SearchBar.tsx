@@ -1,13 +1,15 @@
 "use client";
 
 import { KeyboardEvent, useRef, useState, useTransition } from "react";
-import { useRouter } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
 import { Loader, Search } from "lucide-react";
 import { Button } from "./ui/button";
 import { Input } from "./ui/input";
 
 const SearchBar = () => {
-  const [query, setQuery] = useState("");
+  const searchParams = useSearchParams();
+  const defaultQuery = searchParams.get("query") || "";
+  const [query, setQuery] = useState(defaultQuery);
   const [isSearching, setTransition] = useTransition();
   const router = useRouter();
   const inputRef = useRef<HTMLInputElement>(null);
