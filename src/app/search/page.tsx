@@ -36,7 +36,7 @@ const Page = async ({ searchParams }: PageProps) => {
       <div className="text-center py-4 bg-white shadow-md rounded-b-md">
         <h3 className="mt-2 text-sm font-semibold text-gray-900">No results</h3>
         <p className="mt-1 text-sm mx-auto max-w-prose text-gray-500">
-          Sorry we couldn't find any matches products for{" "}
+          Sorry we couldn`t find any matches products for{" "}
           <span className="font-medium text-red-600">{query}</span>
         </p>
       </div>
