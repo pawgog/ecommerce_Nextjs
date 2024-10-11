@@ -1,3 +1,4 @@
+import Image from "next/image";
 import BackButton from "@/components/BackButton";
 import { db } from "@/db";
 import { productTable } from "@/db/schema";
@@ -31,6 +32,18 @@ const Product = async ({ params }: ProductProps) => {
           <h1 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
             {product.name}
           </h1>
+        </div>
+
+        <div className="aspect-square my-6 border border-border w-52 h-52">
+          <div className="relative bg-zinc-100 w-full h-full overflow-hidden rounded-xl">
+            <Image
+              fill
+              loading="eager"
+              className="h-full w-full object-cover object-center"
+              src={`/${product.imgId}`}
+              alt="product image"
+            />
+          </div>
         </div>
 
         <div className="mt-4">
