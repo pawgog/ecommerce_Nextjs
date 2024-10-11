@@ -1,9 +1,13 @@
 import Image from "next/image";
+import { notFound } from "next/navigation";
+
 import BackButton from "@/components/BackButton";
+import { Button } from "@/components/ui/button";
+import { Shield } from "lucide-react";
+
 import { db } from "@/db";
 import { productTable } from "@/db/schema";
 import { eq } from "drizzle-orm";
-import { notFound } from "next/navigation";
 
 interface ProductProps {
   params: {
@@ -57,6 +61,18 @@ const Product = async ({ params }: ProductProps) => {
             <p className="text-base max-w-prose text-muted-foreground">
               {product.description}
             </p>
+          </div>
+        </div>
+        <div className="mt-6">
+          <Button className="w-full mt-10">Add to cart</Button>
+
+          <div className="mt-6 text-center">
+            <div className="inline-flex text-sm text-medium">
+              <Shield className="mr-2 h-5 w-5 flex-shrink-0 text-gray-400" />
+              <span className="text-muted-foreground hover:text-gray-700">
+                30 Day Return Guarantee
+              </span>
+            </div>
           </div>
         </div>
       </div>
