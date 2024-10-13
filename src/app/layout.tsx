@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
+import { staticText } from "@/components/utils/staticText";
 import { Icons } from "@/components/Icons";
 import SearchBar from "@/components/SearchBar";
 
@@ -24,11 +25,10 @@ export default function RootLayout({
             <div className="w-full h-full flex flex-col items-center gap-4">
               <Icons.Sparkle className="w-16 h-16" />
               <h1 className="tracking-tight text-4xl sm:text-6xl font-bold">
-                EcommerceShop
+                {staticText.title}
               </h1>
               <p className="max-w-xl text-center text-lg text-slate-700">
-                Modern and beautifully online shop with all products which you
-                need to your home.
+                {staticText.description}
               </p>
               <div className="mx-auto mt-16 w-full max-w-2xl flex flex-col">
                 <SearchBar />

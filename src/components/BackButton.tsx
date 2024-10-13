@@ -1,8 +1,9 @@
 "use client";
 
 import { useRouter } from "next/navigation";
-import { Button } from "./ui/button";
 import { ChevronLeft } from "lucide-react";
+import { Button } from "./ui/button";
+import { staticText } from "./utils/staticText";
 
 const BackButton = () => {
   const router = useRouter();
@@ -13,7 +14,7 @@ const BackButton = () => {
       variant="secondary"
     >
       <ChevronLeft className="h-4 w-4" />
-      Back
+      {staticText.back}
     </Button>
   );
 };

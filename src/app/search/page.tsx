@@ -1,9 +1,12 @@
-import { db } from "@/db";
-import { productTable } from "@/db/schema";
-import { sql } from "drizzle-orm";
 import Image from "next/image";
 import Link from "next/link";
 import { redirect } from "next/navigation";
+
+import { staticText } from "@/components/utils/staticText";
+
+import { db } from "@/db";
+import { productTable } from "@/db/schema";
+import { sql } from "drizzle-orm";
 
 interface PageProps {
   searchParams: {
@@ -34,9 +37,11 @@ const Page = async ({ searchParams }: PageProps) => {
   if (products.length === 0) {
     return (
       <div className="text-center py-4 bg-white shadow-md rounded-b-md">
-        <h3 className="mt-2 text-sm font-semibold text-gray-900">No results</h3>
+        <h3 className="mt-2 text-sm font-semibold text-gray-900">
+          {staticText.noResults}
+        </h3>
         <p className="mt-1 text-sm mx-auto max-w-prose text-gray-500">
-          Sorry we couldn`t find any matches products for{" "}
+          {staticText.noFindProduct}{" "}
           <span className="font-medium text-red-600">{query}</span>
         </p>
       </div>

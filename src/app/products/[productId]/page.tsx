@@ -3,6 +3,7 @@ import { notFound } from "next/navigation";
 
 import BackButton from "@/components/BackButton";
 import { Button } from "@/components/ui/button";
+import { staticText } from "@/components/utils/staticText";
 import { Shield } from "lucide-react";
 
 import { db } from "@/db";
@@ -64,13 +65,13 @@ const Product = async ({ params }: ProductProps) => {
           </div>
         </div>
         <div className="mt-6">
-          <Button className="w-full mt-10">Add to cart</Button>
+          <Button className="w-full mt-10">{staticText.addToCart}</Button>
 
           <div className="mt-6 text-center">
             <div className="inline-flex text-sm text-medium">
               <Shield className="mr-2 h-5 w-5 flex-shrink-0 text-gray-400" />
               <span className="text-muted-foreground hover:text-gray-700">
-                Guarantee Return Policy
+                {staticText.returnPolicy}
               </span>
             </div>
           </div>
