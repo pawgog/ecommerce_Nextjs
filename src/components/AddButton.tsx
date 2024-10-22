@@ -1,6 +1,5 @@
 "use client";
 
-import { useState } from "react";
 import { Shield } from "lucide-react";
 
 import { Product } from "@/db/schema";
@@ -9,21 +8,18 @@ import { addProductToCart } from "@/actions/productActions";
 import { Button } from "./ui/button";
 import { staticText } from "./utils/staticText";
 
-interface AddProductProps {
+interface AddButtonProps {
   product: Product;
 }
 
-const AddProduct = ({ product }: AddProductProps) => {
-  const [productCart, setProductCart] = useState<Product[]>([]);
-
-  const handleAddProductToCart = async () => {
+const AddButton = ({ product }: AddButtonProps) => {
+  const handleAddProduct = async () => {
     await addProductToCart(product);
-    setProductCart((prev: Product[]) => [...prev, product]);
   };
 
   return (
     <>
-      <Button onClick={handleAddProductToCart} className="w-full mt-10">
+      <Button onClick={handleAddProduct} className="w-full mt-10">
         {staticText.addToCart}
       </Button>
       <div className="mt-6 text-center">
@@ -38,4 +34,4 @@ const AddProduct = ({ product }: AddProductProps) => {
   );
 };
 
-export default AddProduct;
+export default AddButton;
