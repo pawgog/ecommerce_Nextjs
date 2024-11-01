@@ -2,7 +2,7 @@ import Image from "next/image";
 import { notFound } from "next/navigation";
 
 import BackButton from "@/components/BackButton";
-import AddProduct from "@/components/AddProduct";
+import AddButton from "@/components/AddButton";
 
 import { db } from "@/db";
 import { productTable } from "@/db/schema";
@@ -63,7 +63,7 @@ const Product = async ({ params }: ProductProps) => {
           </div>
         </div>
         <div className="mt-6">
-          <AddProduct product={product} />
+          <AddButton product={product} />
         </div>
       </div>
     </div>
