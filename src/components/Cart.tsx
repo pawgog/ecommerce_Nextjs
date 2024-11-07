@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import { Trash2 } from "lucide-react";
+
 import { Product } from "@/db/schema";
 
 import { staticText } from "./utils/staticText";
