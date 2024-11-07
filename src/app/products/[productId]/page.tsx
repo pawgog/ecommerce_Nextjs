@@ -4,9 +4,7 @@ import { notFound } from "next/navigation";
 import BackButton from "@/components/BackButton";
 import AddButton from "@/components/AddButton";
 
-import { db } from "@/db";
-import { productTable } from "@/db/schema";
-import { eq } from "drizzle-orm";
+import { getSingleProduct } from "@/actions/productActions";
 
 interface ProductProps {
   params: {
@@ -16,14 +14,9 @@ interface ProductProps {
 
 const Product = async ({ params }: ProductProps) => {
   const { productId } = params;
+  const [product] = await getSingleProduct(productId);
 
   if (!productId) return notFound();
-
-  const [product] = await db
-    .select()
-    .from(productTable)
-    .where(eq(productTable.id, productId));
-
   if (!product) return notFound();
 
   return (

@@ -1,11 +1,8 @@
 import { redirect } from "next/navigation";
 
-import { staticText } from "@/components/utils/staticText";
-
-import { db } from "@/db";
-import { productTable } from "@/db/schema";
-import { sql } from "drizzle-orm";
 import ProductsPage from "@/components/ProductsPage";
+import { staticText } from "@/components/utils/staticText";
+import { filterAllProducts } from "@/actions/productActions";
 
 interface PageProps {
   searchParams: {
@@ -20,18 +17,7 @@ const Page = async ({ searchParams }: PageProps) => {
     redirect("/");
   }
 
-  let products = await db
-    .select()
-    .from(productTable)
-    .where(
-      sql`to_tsvector('simple', lower(${productTable.name} || ' ' || ${
-        productTable.description
-      })) @@ to_tsquery('simple', lower(${query
-        .trim()
-        .split(" ")
-        .join(" & ")}))`
-    )
-    .limit(5);
+  const products = await filterAllProducts(query);
 
   if (products.length === 0) {
     return (

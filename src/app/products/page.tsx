@@ -1,9 +1,8 @@
-import { db } from "@/db";
-import { productTable } from "@/db/schema";
 import ProductsPage from "@/components/ProductsPage";
+import { getAllProducts } from "@/actions/productActions";
 
 const Products = async () => {
-  let products = await db.select().from(productTable);
+  const products = await getAllProducts();
 
   return <ProductsPage products={products} />;
 };
