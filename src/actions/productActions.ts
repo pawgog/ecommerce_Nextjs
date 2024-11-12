@@ -32,5 +32,10 @@ export const filterAllProducts = async (query: string) => {
 
 export const addProductToCart = async (product: Product) => {
   await db.insert(productsCart).values(product);
-  revalidatePath("/");
+  revalidatePath('/', 'layout')
+};
+
+export const deleteProductFromCart = async (productId: string) => {
+  await db.delete(productsCart).where(eq(productsCart.id, productId));
+  revalidatePath('/', 'layout')
 };
