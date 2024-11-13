@@ -7,6 +7,7 @@ import { Product } from "@/db/schema";
 
 import { staticText } from "./utils/staticText";
 import { calculateTotalAmount } from "./utils/helper";
+import { deleteProductFromCart } from "@/actions/productActions";
 
 interface CartProps {
   products: Product[];
@@ -46,7 +47,10 @@ const Cart = ({ products }: CartProps) => {
                   </div>
                 </div>
                 <div className="flex text-sm divide-x">
-                  <button className="flex items-center px-2 py-1 pl-0 space-x-1">
+                  <button
+                    onClick={() => deleteProductFromCart(id)}
+                    className="flex items-center px-2 py-1 pl-0 space-x-1"
+                  >
                     <Trash2 />
                     <span>{staticText.remove}</span>
                   </button>
